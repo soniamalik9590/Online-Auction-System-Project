@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ancient</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/category_ancient.css" />
+  </head>
+
+  <body>
+    <div class="grid">
+      <!------------------------------------------------------------------------------------------->
+      <div class="card" onclick="window.location = '/AntiqueArtifacts'">
+        <div class="card-image"></div>
+
+        <div class="card-text">
+          <span class="date">4 days ago</span><br />
+          <h2>Ancient Artifact</h2>
+          <br />
+          <p>
+            A structure or appearance that is not natural, but is due to
+            manipulation. Due to distortion or fuzziness of an image caused by
+            manipulation, such as during compression of a digital file.
+          </p>
+        </div>
+
+        <div class="card-stats">
+          <div class="stat">
+            <div class="value hours">4<sup>m</sup></div>
+            <div class="type">hours</div>
+          </div>
+
+          <div class="stat border">
+            <div class="value minutes">5123</div>
+            <div class="type">minutes</div>
+          </div>
+
+          <div class="stat">
+            <div class="value seconds">32</div>
+            <div class="type">seconds</div>
+          </div>
+        </div>
+      </div>
+      <!------------------------------------------------------------------------------------------->
+    </div>
+  </body>
+
+  <script>
+    let time = { minutes: 2, seconds: 0 };
+
+    for (i = 0; i < 10; i++) {
+      document.querySelectorAll(".seconds")[i].innerHTML = time.seconds;
+      document.querySelectorAll(".minutes")[i].innerHTML = time.minutes;
+      document.querySelectorAll(".hours")[i].innerHTML = 00;
+    }
+
+    let loop = setInterval(() => {
+      if (time.seconds == 0) {
+        time.minutes--;
+        time.seconds = 60;
+
+        for (i = 0; i < 10; i++) {
+          document.querySelectorAll(".minutes")[i].innerHTML = time.minutes;
+        }
+      }
+      time.seconds--;
+      if (time.seconds == 0 && time.minutes == 0) {
+        clearInterval(loop);
+      }
+
+      for (i = 0; i < 10; i++) {
+        document.querySelectorAll(".seconds")[i].innerHTML = time.seconds;
+      }
+    }, 1000);
+  </script>
+</html>
